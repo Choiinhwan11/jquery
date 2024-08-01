@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/event.css">
+</head>
+<body>
+    <h1> 창크기 조절 이벤트 </h1>
+    <div id="result"></div>
+    
+    <script src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function(){
+            $(window).resize(function(){
+                $('#result').html('<p>'+$(window).width()+'x'+$(window).height()+'</p>');
+                //윈도우 사이즈에 따라서 사이즈를 넣어주는 것이다 . 윈도우창에 내리면 화면이 보여주는 느낌. 
+            });
+        });
+    </script>
+</body>
+</html>

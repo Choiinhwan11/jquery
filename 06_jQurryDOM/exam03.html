@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        ul.menu li {
+            float: left;
+            width: 179px;
+            height: auto; /* 높이를 자동으로 설정하여 내용이 모두 보이도록 함 */
+            background: url("../image/btn.png");
+            position: relative; /* 부모 요소 기준으로 자식 요소 위치 지정 */
+        }
+        ul.menu li a {
+            display: block;
+            width: 100%;
+            line-height: 48px; /* 메뉴의 높이에 맞춰 수직 가운데 정렬 */
+            text-align: center;
+            font-weight: bold;
+            color: #CFDFB5;
+            text-decoration: none;
+        }
+        ul.menu li a:hover {
+            background: url("../image/btn_over.png");
+        }
+        ul.menu .sub {
+            display: none; /* 기본적으로 서브 메뉴 숨김 */
+            position: absolute; /* 부모 요소에 대해 절대 위치 지정 */
+            top: 48px; /* 부모 요소의 하단에 위치하도록 설정 */
+            left: 0;
+            background-color: #fff; /* 서브 메뉴 배경색 */
+            border: 1px solid #ccc; /* 서브 메뉴 테두리 */
+            z-index: 1; /* 다른 요소 위에 표시되도록 설정 */
+            width: auto; /* 너비를 자동으로 설정하여 내용이 모두 보이도록 함 */
+        }
+        ul.menu .sub li {
+            width: 100%;
+            height: auto; /* 높이를 자동으로 설정하여 내용이 모두 보이도록 함 */
+            line-height: 30px; /* 서브 메뉴 아이템 수직 가운데 정렬 */
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <ul class="menu">
+        <li>
+            <a href="#">메뉴A</a>
+            <ul class="sub">
+                <li><a href="#">서브메뉴A</a></li>
+                <li><a href="#">서브메뉴A</a></li>
+                <li><a href="#">서브메뉴A</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">메뉴B</a>
+            <ul class="sub">
+                <li><a href="#">서브메뉴B</a></li>
+                <li><a href="#">서브메뉴B</a></li>
+                <li><a href="#">서브메뉴B</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">메뉴C</a>
+            <ul class="sub">
+                <li><a href="#">서브메뉴C</a></li>
+                <li><a href="#">서브메뉴C</a></li>
+                <li><a href="#">서브메뉴C</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <script src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function(){
+            $('.menu > li').hover(function(){
+                $(this).find('.sub').stop().slideDown(300);
+            }, function(){
+                $(this).find('.sub').stop().slideUp(300);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/event.css">
+</head>
+<body>
+    <h1>key 이벤트</h1>
+    <div id="input">
+        <input type="text">
+    </div>
+    <h2>결과</h2>
+    <div id="result"></div>
+
+
+
+    <script src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        //window.onload
+        $(function(){
+            var coubt =0;
+            $('#input > input[type ="text"]').keypress(function(e){
+                count++;
+                $('#result').html('key count : '+count + '개 &gt;&gt;'+e.whitch)
+            });
+        });
+
+    </script>
+</body>
+</html>
+<!-- 
+    keypress = 대소문자를 구별해준다 .(ctrl , shift , alt 구별을 하지 못한다 . )
+
+ -->

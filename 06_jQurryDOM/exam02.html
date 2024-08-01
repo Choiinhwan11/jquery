@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+	width: 400px;
+	height: 300px;
+	padding-top: 20px;
+	background-size: 100% 100%;
+}
+ul {
+	padding: 10px 20px;
+	background-color: rgba(255, 255, 255, 0.6)
+}
+    </style>
+</head>
+<body>
+    <div>
+        <ul id="menu">
+            <li class="item">
+                <a href="#">../image/1.jpg</a>
+            </li>
+            <li class="item">
+                <a href="#">../image/2.jpg</a>
+            </li>
+            <li class="item">
+                <a href="#">../image/3.jpg</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <script src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function(){
+            $('.item>a').click(function(){
+                var index =$(this).parent().index();
+                console.log('index='+index);
+
+                var image = ['../image/1.jpg','../image/2.jpg','../image/3.jpg'];
+                //div 태그안에 css 주는 방법 
+                $(this).parents('div').css({
+                    'background-image':'url('+image[index]+')'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
+<!--
+    부모요서 선택 또는 찾는 방법
+    1. parent ()
+    2. parent ()- 선택한 요소의 상위 조상 요소를 모두 선택한다.
+    parents ("css셀렉터")- 선택자에 해당하는 상위 요소먼ㅇㄹ 선택 할수 있다. 
+
+    3. closest ("css셀렉터")
+    -자신을 포함ㅎ한 상위 요소둥에소 전달받은 선택자에 해당하는 요소의 집합에 가장첫번째 요소를 선택한다. 
+    -parents() 메소드와 비슷하지만 , 해당 요소의 상위 요소뿐만 아니라 해당 요소 자신까지도 포함하녀 탐색한다는 점이다르다.
+-->

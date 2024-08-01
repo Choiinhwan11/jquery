@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo2">
+        <button>add</button>
+        <ul>
+            <li>test1</li>
+            <li>test2</li>
+            <li>test3</li>
+
+        </ul>
+    </div>
+    <script src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function(){
+            // 리스트 아이템을 클릭했을 때의 이벤트 핸들러를 바인딩합니다.
+            $('#demo2 li').bind('click', function(){
+                alert($(this).text());
+            });
+    
+            /* 버튼을 클릭했을 때의 이벤트 핸들러를 바인딩합니다.
+            $('#demo2 button').bind('click', function(){//비동적 처리
+                // ul 요소에 새로운 리스트 아이템을 추가합니다.
+                $('#demo2 ul').append('<li>added</li>');
+            });
+*/
+
+            //동적 처리 
+
+            $('#demo2 button').bind('click',function(){
+                $('#demo2 li ').unbind('click');
+                $('#demo2 ul').append('<li>added</li>').find($('li')).click(function(){
+                    alert($(this).text());
+                })
+            })
+
+        });
+    </script>
+    
+</body>
+</html>
+
+<!--bind 가 deprecated 되었으므로 비추천 , bind eotls on 으로 사용한다. 
+BIND 로 연결된 이벤트는 unbind 로 제거하고 on 연결된 이벤트는 off 로 한다. -->

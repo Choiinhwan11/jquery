@@ -1,0 +1,19 @@
+<script src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script>
+            $(function(){
+                $('#demo2 button').on('click', function(){
+                    $('#demo2 ul').append('<li>added</li>')
+                });
+
+                // $('#demo2 li').on('click', function(){
+                // alert($(this).text());
+                // });
+
+                //동적처리
+                $("#demo2").on();
+                $(document).on('click', 'li', function(){
+                    alert($(this).text());
+                });
+
+            });
+        </script>

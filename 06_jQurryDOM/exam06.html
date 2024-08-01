@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * { 
+	padding: 0; 
+	margin: 0; 
+	color: #333;
+}
+	
+body { 
+	padding: 20px 30px;
+}
+
+#login fieldset {
+	width: 270px; 
+	padding: 15px;
+	border: 1px solid #7BAEB5;
+	position: relative;
+}
+		
+#login fieldset legend {
+	display: none;
+}
+
+#login label {
+	display: inline-block;
+	width: 80px;
+	font-size: 14px;
+	font-weight: bold;
+	padding-left: 10px;
+	margin-bottom: 10px;
+}
+
+#login input[type='text'], #login input[type='password'] {
+	border: 1px solid #ccc;
+	padding: 3px 10px;
+	width: 150px;
+	vertical-align: middle;
+	font-size: 12px;
+	line-height: 150%;
+}
+
+#login input[type='submit'] { 
+	width: 270px;
+	height: 20px;
+}
+
+.active {
+	border: 1px solid #f00 !important;
+	background-color: #00ffff;
+}
+
+#login {
+	position: relative;
+}
+
+#login fieldset .loader {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.3);
+	display: none;
+}
+
+#login .loader img {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -5px;
+	margin-top: -5px;
+}
+    </style>
+</head>
+<body>
+    <form id="login">
+        <fieldset>
+            <legend>로그인</legend>
+            <div>
+                <label for="user_id">아이디</label>
+                <input type="text" name="uesr_id" id="uesr_id">
+
+            </div>
+            <div>
+                <label for="ueser_password">비밀번호</label>
+                <input type="password"name="ueser_password" id="ueser_password">
+                <div id="pwdDiv" style="color: red; font-size: 9px; font-weight: bold;"></div>
+            </div>
+            <div>
+                <input type="submit" value="로그인">
+            </div>
+            <div class="loader"><img src="../image/loader.gif" ></div>
+
+        </fieldset>
+
+
+    </form>
+
+
+
+    
+<script src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    $(function(){
+        // 아이디와 비밀번호 입력 필드에 대한 포커스와 블러 이벤트를 처리합니다.
+        $('#user_id, #user_password').on({
+            'focus': function(){
+                $(this).addClass('attive');
+            },
+            'blur': function(){
+                $(this).removeClass('attive');
+            }
+        });
+
+        // 로그인 폼 제출 이벤트를 처리합니다.
+        $('#login').on('click', function(e){
+            e.preventDefault(); // 기본 동작을 중단합니다.
+
+            $('#pwdDiv').empty(); // 오류 메시지를 비웁니다.
+
+            var user_id = $('#user_id').val();
+            var user_password = $('#user_password').val();
+
+            if (!user_id) {
+                alert('아이디를 입력하세요');
+                $('#user_id').focus();
+                return false;
+            }
+
+            if (!user_password) {
+                alert('비밀번호를 입력하세요');
+                $('#user_password').focus();
+                return false;
+            }
+
+            // 로딩 표시를 보여줍니다.
+            $('#login').addClass('loader');
+
+            setTimeout(function(){
+                alert('안녕하세요 ' + user_id + '님');
+                // 로딩 표시를 숨깁니다.
+                $('#login').removeClass('loader');
+            }, 1000);
+
+            return false;
+        });
+    });
+    </script>
+</body>
+</html>
+<!-- 
+1. bind 함수
+
+$("요소").bind("이벤트", function() {
+	... 이벤트 처리 ...
+});
+
+
+$("요소").bind( "이벤트1 이벤트2 이벤트3", function() { //이벤트 이름을 공백으로 구분하여 여러개 지정
+	... 이벤트 처리 ...
+});
+
+$("요소").bind({
+	"이벤트1" : function() { ... 이벤트 처리 ...},
+	"이벤트2" : function() { ... 이벤트 처리 ...},
+	"이벤트3" : function() { ... 이벤트 처리 ...}
+});
+ -->
